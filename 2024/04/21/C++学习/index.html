@@ -3,9 +3,10 @@
 <head>
   <title>
     
+    C++学习 - 
     p1nk&#39;s blog
   </title>
-  <meta property="og:title" content="p1nk&#39;s blog" />
+  <meta property="og:title" content="C++学习 - p1nk&#39;s blog" />
   <meta property="og:site_name" content="p1nk&#39;s blog" />
 
   <meta charset="utf-8" />
@@ -23,8 +24,8 @@
   
 
   
-  <link rel="canonical" href="http://blog.p1nk.cn/archives/2024/">
-  <meta name="og:url" content="http://blog.p1nk.cn/archives/2024/">
+  <link rel="canonical" href="http://blog.p1nk.cn/2024/04/21/C++%E5%AD%A6%E4%B9%A0/">
+  <meta name="og:url" content="http://blog.p1nk.cn/2024/04/21/C++%E5%AD%A6%E4%B9%A0/">
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -55,161 +56,55 @@
 <hr />
 
   <div class="main">
-    <div class="list">
-  
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 21st 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/21/C++学习/">C++学习</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
     
+<link rel="stylesheet" href="/css/post.css">
+
+<post>
+
+  <div class="post_title">
+    C++学习
   </div>
 
-  <!--
-  <a class="more" href="/2024/04/21/C++学习/">阅读更多</a>
-  -->
+  <br /><br />
 
-</div>
+  <div id="post_content">
+    <p><strong>结构体</strong>：</p>
+<p>感觉可以理解为一个类，后面使用的时候实例化。</p>
+<p>一个小小的案例</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">char</span> name[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">float</span> score;</span><br><span class="line">&#125; Student;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">initStudent</span><span class="params">(Student *s, <span class="type">const</span> <span class="type">char</span> *name, <span class="type">int</span> age, <span class="type">float</span> score)</span> &#123;</span><br><span class="line">    <span class="built_in">strcpy</span>(s-&gt;name, name);</span><br><span class="line">    s-&gt;age = age;</span><br><span class="line">    s-&gt;score = score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">printStudent</span><span class="params">(<span class="type">const</span> Student *s)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Student Name: %s\n&quot;</span>, s-&gt;name);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Age: %d\n&quot;</span>, s-&gt;age);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Score: %.2f\n&quot;</span>, s-&gt;score);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    Student s1;</span><br><span class="line">    initStudent(&amp;s1, <span class="string">&quot;Alice&quot;</span>, <span class="number">20</span>, <span class="number">92.5</span>);</span><br><span class="line">    printStudent(&amp;s1);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<div class=index_list>
+<p>其实就是先规定好Student里有些什么数据，然后<code>Student s1</code>实例化，通过<code>initStudent</code>函数来赋值，<code>printStudent</code>来打印，这里直接用的是指针，准确来说，如果是指针的话，会修改里面结构体里的值，但是如果用的是值传递的话则不会，但是这个无所谓，因为我们这里实例化了一个对象了呀。</p>
 
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 18th 」
-    </div>
   </div>
 
-  <div class="index_post_title">
-    <a href="/2024/04/18/some-tips/">some tips</a>
-  </div>
+  <br />
+
+  
+  <br /><br />
+
 
   
 
-  <div class="index_post_excerpt">
-    
-  </div>
+<div id="copyright">
 
-  <!--
-  <a class="more" href="/2024/04/18/some-tips/">阅读更多</a>
-  -->
+  <a id="license-image" rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img height="15" width="80" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+  </a>
 
+  <p id="license-word-hyper">
+    This work is licensed under a
+    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+    Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+    .
+  </p>
 </div>
 
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 17th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/17/奇奇怪怪的东西/">奇奇怪怪的东西</a>
-  </div>
-
+  <div id="top">
+  <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</div>
+  <div onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'})">▼</div>
+</div>
   
 
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/17/奇奇怪怪的东西/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 15th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/15/小技巧/">小技巧</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/15/小技巧/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 4th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/04/云安全随记/">云安全随记</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/04/云安全随记/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 March 31st 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/03/31/hello-world/">Hello World</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/03/31/hello-world/">阅读更多</a>
-  -->
-
-</div>
-
-
-<div class="page_num">
-
-  
-  
-
-</div>
-</div>
-
+</post>
   </div>
 
   <foot id="footer">
