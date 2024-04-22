@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    
+    DS coding - 
+    p1nk&#39;s blog
+  </title>
+  <meta property="og:title" content="DS coding - p1nk&#39;s blog" />
+  <meta property="og:site_name" content="p1nk&#39;s blog" />
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+  <meta property="og:type" content="article" />
+
+
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+
+  
+
+  
+  <link rel="canonical" href="http://blog.p1nk.cn/2024/04/21/DS-coding/">
+  <meta name="og:url" content="http://blog.p1nk.cn/2024/04/21/DS-coding/">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div class="title">
+  <img class="title_img" alt="Title image" width="300" height="300" src="/images/icon.png" /><br>
+  <div id="site_title">p1nk's blog</div>
+</div>
+  <div class="navi">
+  <a id="navi_item_title" href="/#" class="menu-item-link">
+    Home
+  </a>
+  <a id="navi_item_tags" href="/tags" class="menu-item-link">
+    Tags
+  </a>
+  <a id="navi_item_about" href="/about" class="menu-item-link">
+    AboutMe
+  </a>
+  <a id="navi_item_search" href="/search" class="menu-item-link">
+    Search
+  </a>
+  
+</div>
+
+<hr />
+
+  <div class="main">
+    
+<link rel="stylesheet" href="/css/post.css">
+
+<post>
+
+  <div class="post_title">
+    DS coding
+  </div>
+
+  <br /><br />
+
+  <div id="post_content">
+    <p>x</p>
+<p>线性表插入一个值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MaxSize = <span class="number">100</span>; <span class="comment">// 定义最大容量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType; <span class="comment">// 定义元素类型为 int</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sqList</span> &#123;</span></span><br><span class="line">    ElemType data[MaxSize]; <span class="comment">// 存储元素的数组</span></span><br><span class="line">    <span class="type">int</span> length; <span class="comment">// 表示顺序表的当前长度</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">ListInsert</span><span class="params">(sqList &amp;L, <span class="type">int</span> i, ElemType e)</span> &#123;</span><br><span class="line">    <span class="comment">// 检查位置 i 是否有效</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; L.length + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查顺序表是否已满</span></span><br><span class="line">    <span class="keyword">if</span> (L.length &gt;= MaxSize)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将第 i 个位置及之后的元素后移</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = L.length; j &gt;= i; j--)</span><br><span class="line">        L.data[j] = L.data[j - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在位置 i 处放入新元素 e</span></span><br><span class="line">    L.data[i - <span class="number">1</span>] = e;</span><br><span class="line">    L.length++; <span class="comment">// 顺序表长度加 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 创建并初始化顺序表</span></span><br><span class="line">    sqList myList;</span><br><span class="line">    myList.length = <span class="number">5</span>; <span class="comment">// 假设顺序表已有 5 个元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; myList.length; i++) &#123;</span><br><span class="line">        myList.data[i] = i + <span class="number">1</span>; <span class="comment">// 初始化元素为 1, 2, 3, 4, 5</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入新元素</span></span><br><span class="line">    <span class="type">int</span> insertPos = <span class="number">7</span>; <span class="comment">// 指定插入位置</span></span><br><span class="line">    <span class="type">int</span> newValue = <span class="number">99</span>; <span class="comment">// 指定插入的新值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ListInsert(myList, insertPos, newValue)) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Insertion successful!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;New list: &quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; myList.length; i++) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; myList.data[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Insertion failed!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>并且插入的位置是相对位置。值得细看的代码。</p>
+<p>简单了来说就说，用L.length作为下标用来表示一个空的位置，然后把前一个移到这个上面。</p>
+<p>最后<code>L.data[i - 1] = e;</code>这个实现了为什么说，我们</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入新元素</span></span><br><span class="line"><span class="type">int</span> insertPos = <span class="number">3</span>; <span class="comment">// 指定插入位置</span></span><br><span class="line"><span class="type">int</span> newValue = <span class="number">99</span>; <span class="comment">// 指定插入的新值</span></span><br></pre></td></tr></table></figure>
+
+<p>这里是多少就是插入的相对位置。</p>
+<p>线性表删除一个值</p>
+<p>有了前面的基础，这个理解起来就easy太多了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MaxSize = <span class="number">100</span>; <span class="comment">// 定义最大容量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType; <span class="comment">// 定义元素类型为 int</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sqList</span> &#123;</span></span><br><span class="line">    ElemType data[MaxSize]; <span class="comment">// 存储元素的数组</span></span><br><span class="line">    <span class="type">int</span> length; <span class="comment">// 表示顺序表的当前长度</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除顺序表中的元素</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">ListDelete</span><span class="params">(sqList &amp;L, <span class="type">int</span> i, ElemType &amp;e)</span> &#123;</span><br><span class="line">    <span class="comment">// 检查位置 i 是否有效</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; L.length)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将被删除的元素赋值给 e</span></span><br><span class="line">    e = L.data[i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将第 i 个位置后的元素前移</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt; L.length; j++) &#123;</span><br><span class="line">        L.data[j - <span class="number">1</span>] = L.data[j];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 顺序表长度减 1</span></span><br><span class="line">    L.length--;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 创建并初始化顺序表</span></span><br><span class="line">    sqList myList;</span><br><span class="line">    myList.length = <span class="number">5</span>; <span class="comment">// 假设顺序表已有 5 个元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; myList.length; i++) &#123;</span><br><span class="line">        myList.data[i] = i + <span class="number">1</span>; <span class="comment">// 初始化元素为 1, 2, 3, 4, 5</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除操作</span></span><br><span class="line">    <span class="type">int</span> deletePos = <span class="number">4</span>; <span class="comment">// 指定删除位置</span></span><br><span class="line">    <span class="type">int</span> deletedValue; <span class="comment">// 用于接收被删除的值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ListDelete(myList, deletePos, deletedValue)) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Deletion successful! Deleted element: &quot;</span> &lt;&lt; deletedValue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;New list: &quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; myList.length; i++) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; myList.data[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Deletion failed!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这个其实也不是删除了，只是把数值朝前移了，其实原来的下表的数字还存在，只不过我们剪短了线性表的长度，所以删除了。</p>
+<p>单链表：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span>  <span class="comment">// For malloc and free</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType;  <span class="comment">// 假设元素类型为int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义单链表节点类型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iNode</span> &#123;</span></span><br><span class="line">    ElemType data;    <span class="comment">// 数据域</span></span><br><span class="line">    iNode *next;      <span class="comment">// 指针域</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> iNode* LinkList; <span class="comment">// 链表类型定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 带头结点的单链表的初始化</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">InitList</span><span class="params">(LinkList &amp;L)</span> &#123;</span><br><span class="line">    L = new iNode();  <span class="comment">// 使用new代替malloc</span></span><br><span class="line">    <span class="keyword">if</span> (!L) <span class="keyword">return</span> <span class="literal">false</span>;  <span class="comment">// 检查内存分配是否成功</span></span><br><span class="line">    L-&gt;next = nullptr;  <span class="comment">// 明确使用nullptr代替NULL</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表的末尾添加一个新节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">AppendNode</span><span class="params">(LinkList &amp;L, ElemType value)</span> &#123;</span><br><span class="line">    iNode *newNode = new iNode();  <span class="comment">// 使用new创建节点</span></span><br><span class="line">    newNode-&gt;data = value;</span><br><span class="line">    newNode-&gt;next = nullptr;</span><br><span class="line"></span><br><span class="line">    iNode *current = L;</span><br><span class="line">    <span class="keyword">while</span> (current-&gt;next != nullptr) &#123;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    current-&gt;next = newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印链表中的所有元素</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PrintList</span><span class="params">(LinkList L)</span> &#123;</span><br><span class="line">    iNode *current = L-&gt;next;  <span class="comment">// 跳过头结点</span></span><br><span class="line">    <span class="keyword">while</span> (current != nullptr) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; current-&gt;data &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        current = current-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除链表，释放内存</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteList</span><span class="params">(LinkList &amp;L)</span> &#123;</span><br><span class="line">    iNode *current = L;</span><br><span class="line">    <span class="keyword">while</span> (current != nullptr) &#123;</span><br><span class="line">        iNode *next = current-&gt;next;</span><br><span class="line">        delete current;  <span class="comment">// 使用delete代替free</span></span><br><span class="line">        current = next;</span><br><span class="line">    &#125;</span><br><span class="line">    L = nullptr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    LinkList myList;</span><br><span class="line">    <span class="keyword">if</span> (InitList(myList)) &#123;</span><br><span class="line">        AppendNode(myList, <span class="number">10</span>);</span><br><span class="line">        AppendNode(myList, <span class="number">20</span>);</span><br><span class="line">        AppendNode(myList, <span class="number">30</span>);</span><br><span class="line">        AppendNode(myList, <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Elements in the linked list: &quot;</span>;</span><br><span class="line">        PrintList(myList); <span class="comment">// 输出: Elements in the linked list: 10 20 30 40</span></span><br><span class="line"></span><br><span class="line">        DeleteList(myList); <span class="comment">// 释放链表占用的内存</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Failed to initialize the list.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+  </div>
+
+  <br />
+
+  
+  <br /><br />
+
+
+  
+
+<div id="copyright">
+
+  <a id="license-image" rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img height="15" width="80" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+  </a>
+
+  <p id="license-word-hyper">
+    This work is licensed under a
+    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+    Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+    .
+  </p>
+</div>
+
+  <div id="top">
+  <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</div>
+  <div onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'})">▼</div>
+</div>
+  
+
+</post>
+  </div>
+
+  <foot id="footer">
+  <hr class="boldline" />
+  <br>
+
+  <p class="center font">
+    
+    <a target="_blank" rel="noopener" href="https://github.com/username" aria-label="GitHub">
+  <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+   <path class="icon_path" d="M427.392 853.504a61.44 61.44 0 0 1-1.450667 15.530667 92.586667 92.586667 0 0 1-10.965333 27.605333c-15.061333 25.301333-40.661333 42.154667-73.642667 42.154667-77.653333 0-108.117333-38.101333-146.261333-133.504C169.216 740.693333 157.013333 725.461333 128 725.461333v-85.333333c77.653333 0 108.117333 38.101333 146.261333 133.504 25.856 64.597333 38.058667 79.786667 67.072 79.786667 0-12.373333-0.170667-23.296-0.512-38.144-0.853333-34.816-0.938667-41.941333 0.554667-51.2 0.64-20.352 5.888-34.773333 16.384-49.066667-95.232-20.736-159.445333-63.573333-196.309333-132.992l-13.824-32.426667C134.186667 510.848 128 467.072 128 416.426667c0-58.24 17.749333-110.336 50.944-153.856-10.368-41.386667-8.96-91.989333 13.909333-149.077334l7.466667-18.688 19.2-6.101333c2.56-0.853333 5.632-1.578667 9.301333-2.133333 37.290667-5.888 90.325333 8.106667 159.701334 52.48a565.930667 565.930667 0 0 1 127.274666-14.208c38.741333 0 77.226667 3.882667 114.048 11.605333 67.456-42.24 119.04-55.509333 155.306667-49.92 3.626667 0.597333 6.741333 1.322667 9.258667 2.133333l19.285333 6.101334 7.466667 18.773333c20.010667 50.218667 23.424 96.469333 16.128 136.96C875.434667 296.32 896 352.597333 896 416.512c0 53.888-3.84 94.378667-14.933333 133.802667l-11.733334 32.170666c-30.677333 69.333333-98.304 112.64-202.538666 133.248 10.837333 15.018667 15.872 30.250667 15.872 52.394667v42.666667l-0.042667 42.666666a13.013333 13.013333 0 0 0 0.341333 2.730667L682.666667 938.794667c-36.352 0-63.36-17.706667-76.672-45.653334a88.277333 88.277333 0 0 1-8.661334-40.277333v-84.736c0-3.584-0.128-3.797333-8.832-12.501333-23.296-23.296-33.834667-40.874667-33.834666-72.832v-38.613334l38.4-3.84c114.346667-11.52 176.512-43.221333 197.12-89.6l9.6-26.325333c7.68-27.562667 10.88-61.098667 10.88-107.946667 0-49.706667-17.365333-90.837333-50.218667-123.648L742.4 274.773333l7.381333-24.448c6.528-21.717333 8.106667-47.402667 1.152-76.714666a158.634667 158.634667 0 0 0-3.584 0.938666c-22.826667 6.4-51.370667 20.053333-85.76 43.008l-15.658666 10.453334-18.304-4.522667a467.754667 467.754667 0 0 0-111.829334-13.269333c-42.709333 0-84.906667 5.418667-123.946666 16.042666l-19.029334 5.205334-16.256-11.136c-35.541333-24.32-65.109333-38.826667-88.746666-45.568a158.293333 158.293333 0 0 0-4.864-1.28c-8.234667 33.92-4.992 61.781333 3.413333 82.688l9.984 25.088-18.346667 19.797333C228.693333 332.629333 213.333333 370.986667 213.333333 416.512c0 41.685333 4.864 76.202667 13.824 102.229333l11.178667 26.453334c27.904 52.352 87.168 83.84 192.853333 95.146666l38.144 4.096v38.357334c0 32-10.538667 49.536-33.834666 72.832-8.704 8.704-8.832 8.96-8.832 12.501333l-0.725334 7.893333c-0.512 2.56-0.512 9.258667 0.170667 37.205334 0.298667 12.8 0.469333 22.997333 0.554667 33.621333a33.962667 33.962667 0 0 1 0.725333 6.656z"/>
+  </svg>
+ </a>
+
+    
+    
+    <a href="mailto:username@example.com" aria-label="Email">
+  <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M513.78 602.99c-27.28 0.45-53.79-9.09-74.53-26.83l-65.96-56.64c-15.64-13.37-17.48-36.9-4.1-52.54 13.38-15.65 36.9-17.48 52.54-4.1l65.96 56.64c13.68 11.1 33.27 11.1 46.95 0L881.2 253.08l-708.02-2.61c-20.58 0-37.26-16.69-37.26-37.26s16.68-37.26 37.26-37.26H881.2c41.09-2.36 76.32 29.05 78.67 70.14a74.519 74.519 0 0 1-32.46 65.87L580.86 578.38a111.842 111.842 0 0 1-67.08 24.61z m444.57 133.4V438.28c0-20.58-16.68-37.26-37.26-37.26s-37.26 16.69-37.26 37.26V736.4c0 20.58-16.68 37.26-37.26 37.26h-521.7c-20.58 0-37.26 16.69-37.26 37.26s16.68 37.26 37.26 37.26h521.7c61.72 0.01 111.78-50.05 111.78-111.79zM362.12 363.75c0-20.58-16.68-37.26-37.26-37.26h-223.6c-20.58 0-37.26 16.69-37.26 37.26s16.68 37.26 37.26 37.26h223.59c20.58 0.01 37.27-16.68 37.27-37.26z m0 298.12c0-20.58-16.68-37.26-37.26-37.26h-111.8c-20.58 0-37.26 16.69-37.26 37.26s16.68 37.26 37.26 37.26h111.79c20.58 0 37.27-16.69 37.27-37.26z"/>
+  </svg>
+</a>
+
+    
+    
+    <a target="_blank" rel="noopener" href="https://t.me/username" aria-label="Telegram">
+  <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M834.24 127.872a95.168 95.168 0 0 0-29.856 7.136h-0.128c-9.12 3.616-52.48 21.856-118.4 49.504l-236.224 99.488c-169.504 71.36-336.128 141.632-336.128 141.632l1.984-0.768s-11.488 3.776-23.488 12a64.96 64.96 0 0 0-18.752 18.144c-5.888 8.64-10.624 21.856-8.864 35.52 2.88 23.104 17.856 36.96 28.608 44.608 10.88 7.744 21.248 11.36 21.248 11.36h0.256l156.256 52.64c7.008 22.496 47.616 156 57.376 186.752 5.76 18.368 11.36 29.856 18.368 38.624 3.392 4.48 7.36 8.224 12.128 11.232a35.808 35.808 0 0 0 7.872 3.392l-1.6-0.384c0.48 0.128 0.864 0.512 1.216 0.64 1.28 0.352 2.144 0.48 3.776 0.736 24.736 7.488 44.608-7.872 44.608-7.872l1.12-0.896 92.256-84 154.624 118.624 3.52 1.504c32.224 14.144 64.864 6.272 82.112-7.616 17.376-13.984 24.128-31.872 24.128-31.872l1.12-2.88 119.488-612.128c3.392-15.104 4.256-29.248 0.512-42.976a57.824 57.824 0 0 0-24.992-33.504 59.904 59.904 0 0 0-34.144-8.64z m-3.232 65.6c-0.128 2.016 0.256 1.792-0.64 5.664v0.352l-118.368 605.76c-0.512 0.864-1.376 2.752-3.744 4.64-2.496 1.984-4.48 3.232-14.88-0.896l-189.12-144.992-114.24 104.128 24-153.28 308.992-288c12.736-11.84 8.48-14.336 8.48-14.336 0.896-14.528-19.232-4.256-19.232-4.256l-389.632 241.376-0.128-0.64-186.752-62.88v-0.128l-0.48-0.096a8.64 8.64 0 0 0 0.96-0.384l1.024-0.512 0.992-0.352s166.752-70.272 336.256-141.632c84.864-35.744 170.368-71.744 236.128-99.52 65.76-27.616 114.368-47.872 117.12-48.96 2.624-1.024 1.376-1.024 3.264-1.024z"/>
+  </svg>
+</a>
+
+    
+    
+    
+    
+    
+    
+    
+    <!-- Removed RSS section -->
+  <p>
+    <br>
+  <p id="hitokoto">内敛而不懦弱 寂静而有力量</p>
+  <br>
+  <p class="center font">
+    &copy; - <a href="http://blog.p1nk.cn">p1nk的生命线</a> ：  2001 ~  2024 - Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>   
+  </p>
+  
+  <br />
+</foot>
+
+</body>
+
+</html>
