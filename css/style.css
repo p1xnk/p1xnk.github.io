@@ -16,11 +16,11 @@
 }
 #site_title::before {
   margin-right: 1rem;
-  content: '< ';
+  content: ' ~';
 }
 #site_title::after {
   margin-left: 1rem;
-  content: ' >';
+  content: ' ~';
 }
 @media all and (max-width: 700px) {
   .title_img {
