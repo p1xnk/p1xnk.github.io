@@ -23,8 +23,8 @@
   
 
   
-  <link rel="canonical" href="http://blog.p1nk.cn/archives/">
-  <meta name="og:url" content="http://blog.p1nk.cn/archives/">
+  <link rel="canonical" href="http://blog.p1nk.cn/2025/04/14/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAGitHub%E4%BA%BA%E4%BA%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E5%B0%8F%E8%AE%A1/">
+  <meta name="og:url" content="http://blog.p1nk.cn/2025/04/14/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAGitHub%E4%BA%BA%E4%BA%8B%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E5%B0%8F%E8%AE%A1/">
   
 <link rel="stylesheet" href="/css/style.css">
 
@@ -55,271 +55,79 @@
 <hr />
 
   <div class="main">
-    <div class="list">
-  
-<div class=index_list>
+    
+<link rel="stylesheet" href="/css/post.css">
 
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 14th 」
-    </div>
-  </div>
+<post>
 
-  <div class="index_post_title">
-    <a href="/2025/04/14/搭建一个GitHub人事管理系统项目小计/"></a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
+  <div class="post_title">
     
   </div>
 
-  <!--
-  <a class="more" href="/2025/04/14/搭建一个GitHub人事管理系统项目小计/">阅读更多</a>
-  -->
+  <br /><br />
 
+  <div id="post_content">
+    <h2 id="搭建一个GitHub人事管理系统项目小计"><a href="#搭建一个GitHub人事管理系统项目小计" class="headerlink" title="搭建一个GitHub人事管理系统项目小计"></a>搭建一个GitHub人事管理系统项目小计</h2><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>朋友让我帮他找一个人事管理系统作为期末大作业，我想着，这不是随便弄么，然后欣喜的打开了GitHub，随便下了几个，但是可能是由于自身水平问题，好几个都是有一两个暂时没办法解决的bug，已经准备cursor写一个应付一下，成功找到了一个bug没这么多的项目（主要是bug我能解决hhh），故记录一下解决方案<br>GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/GuoMinJim/PersonManage/tree/master">https://github.com/GuoMinJim/PersonManage/tree/master</a></p>
+<p>感谢搭架子的大佬！！！</p>
+<h4 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h4><p>考虑到能看到这一篇文章的可能都是像我一样啥也不懂的小白，就i尽量记录细致一点（毕竟佬看不到这篇文章</p>
+<p>技术栈:人事管理系统（Spring boot + ssm + jsp）</p>
+<p>首先是需要自身携带MySQL数据库，我这里电脑上有PHPstudy 就直接拿过来用了</p>
+<p>创建完数据库以及把sql路径下的sql文件导入，就可以直接在resource目录下找到application.properties配置文件进行自己数据的修改</p>
+<p><img src="https://s2.loli.net/2025/04/14/WKRHobfQpT31Fj6.png" alt="image-20250414232118593"></p>
+<p>主要就改这几个地方，用户名和密码和自己的数据库对应</p>
+<p>然后数据库链接地址那里，后面跟的参数可以改一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:mysql://127.0.0.1:3306/personnel?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false</span><br></pre></td></tr></table></figure>
+
+<p>这样子bug会少很多，以及少了很多强制的校验流程</p>
+<p><img src="https://s2.loli.net/2025/04/14/AHRUQDuFSyze9ag.png" alt="image-20250414233240908"></p>
+<p>其次就是，在数据库里面可以看到，开始的用户名是root，但是密码没说清楚，我也是解密才知道密码是  0000</p>
+<p>其次就是登录进去之后发现前端点不动 F12 查看之后发现是有一个js文件访问不了</p>
+<p>也就是引用的前端文件：jquery.min.js</p>
+<p>不知为何 BootCDN总是会提示危险，可能是证书过期了</p>
+<p>我们可以自发的访问一遍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js</span><br></pre></td></tr></table></figure>
+
+<p>让浏览器信任</p>
+<p>当然也可以换成百度的cdn</p>
+<p>将项目中的所有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js</span><br></pre></td></tr></table></figure>
+
+<p>replace成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://libs.baidu.com/jquery/2.1.4/jquery.min.js</span><br></pre></td></tr></table></figure>
+
+<p>就可以完美解决这个问题</p>
+<p><img src="https://s2.loli.net/2025/04/14/16TLWkG5stv4PqD.png" alt="image-20250414233339225"></p>
+
+  </div>
+
+  <br />
+
+  
+  <br /><br />
+
+
+  
+
+<div id="copyright">
+
+  <a id="license-image" rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img height="15" width="80" alt="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+  </a>
+
+  <p id="license-word-hyper">
+    This work is licensed under a
+    <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+    Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+    .
+  </p>
 </div>
 
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 June 20th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/06/20/春秋云境initial/"></a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/06/20/春秋云境initial/">阅读更多</a>
-  -->
-
+  <div id="top">
+  <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲</div>
+  <div onclick="document.getElementById('footer').scrollIntoView({behavior: 'smooth'})">▼</div>
 </div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 May 8th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/05/08/javalearn/"></a>
-  </div>
-
   
 
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/05/08/javalearn/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 May 2nd 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/05/02/数据结构王道习题/">数据结构王道习题</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/05/02/数据结构王道习题/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 21st 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/21/DS-coding/">DS coding</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/21/DS-coding/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 21st 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/21/sese-网站/">sese 网站</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/21/sese-网站/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 21st 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/21/C++学习/">C++学习</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/21/C++学习/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 18th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/18/some-tips/">some tips</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/18/some-tips/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 17th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/17/奇奇怪怪的东西/">奇奇怪怪的东西</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/17/奇奇怪怪的东西/">阅读更多</a>
-  -->
-
-</div>
-
-<div class=index_list>
-
-  <div class="line_1">
-    <div class="index_post_date">
-      「 April 15th 」
-    </div>
-  </div>
-
-  <div class="index_post_title">
-    <a href="/2024/04/15/小技巧/">小技巧</a>
-  </div>
-
-  
-
-  <div class="index_post_excerpt">
-    
-  </div>
-
-  <!--
-  <a class="more" href="/2024/04/15/小技巧/">阅读更多</a>
-  -->
-
-</div>
-
-
-<div class="page_num">
-
-  
-
-  
-  
-
-  <a class="page_item" href="http://blog.p1nk.cn/archives/">1</a>
-
-  
-  <a class="page_item" href="http://blog.p1nk.cn/archives/page/2/">2</a>
-
-  
-  
-  
-
-
-  
-
-</div>
-</div>
-
+</post>
   </div>
 
   <foot id="footer">
